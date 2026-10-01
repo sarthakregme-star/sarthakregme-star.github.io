@@ -70,6 +70,53 @@ textarea{width:100%;min-height:130px;resize:vertical}
 .note{color:var(--mute);font-size:.9rem;margin-top:10px}
 .err{color:#ff7a93;font-weight:600;animation:shake .4s}
 @keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.wheelwrap{position:relative;width:min(100%,340px);margin:22px auto 0}
+.wheelwrap canvas{display:block;width:100%;aspect-ratio:1;border-radius:50%;box-shadow:0 0 0 6px rgba(255,255,255,.12),0 0 50px rgba(139,92,255,.55)}
+.ptr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:0;height:0;border:13px solid transparent;border-top:30px solid var(--go);filter:drop-shadow(0 0 8px rgba(255,200,61,.9));z-index:2}
+.case{position:relative;height:168px;margin-top:20px;border-radius:16px;overflow:hidden;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mk{position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--go);box-shadow:0 0 14px var(--go);z-index:2}
+.strip{display:flex;gap:8px;margin-top:12px;will-change:transform}
+.fc{flex:0 0 120px;height:144px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:.95rem;background:rgba(255,255,255,.06);border-bottom:4px solid var(--c);box-shadow:inset 0 -36px 30px -28px var(--c)}
+.fc.win{box-shadow:inset 0 -36px 30px -28px var(--c),0 0 30px var(--c)}
+.fc img,.res img{width:70px;height:70px;object-fit:contain}
+.orb{position:relative;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.75),var(--c) 45%,rgba(0,0,0,.4) 135%);box-shadow:0 0 22px var(--c)}
+.orb b{font-size:1.6rem;color:#0a0f24}
+.orb:before{content:"";position:absolute;top:-6px;left:50%;width:16px;height:10px;border-radius:0 100% 0 100%;background:#3ddc84;transform:translateX(-30%) rotate(-20deg)}
+.res{display:flex;align-items:center;gap:18px;padding:18px;border-radius:16px;border:2px solid var(--c);background:rgba(255,255,255,.05);box-shadow:0 0 40px var(--c);animation:pop .5s cubic-bezier(.2,.9,.3,1.6)}
+.res .orb{width:84px;height:84px;flex:none}
+.res small{color:var(--c);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.res h3{margin:0;font-size:clamp(1.6rem,6vw,2.3rem);line-height:1.1}
+.rv{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(3,5,12,.9);overflow:hidden;animation:rvin .35s ease-out}
+.rv[hidden]{display:none}
+@keyframes rvin{from{opacity:0}}
+.rv-glow{position:absolute;left:50%;top:50%;width:120vmin;height:120vmin;margin:-60vmin 0 0 -60vmin;background:radial-gradient(circle,var(--c) 0%,transparent 62%);opacity:.6;animation:rvp 2.6s ease-in-out infinite}
+@keyframes rvp{50%{opacity:.9;transform:scale(1.08)}}
+.rv-rays{position:absolute;left:50%;top:50%;width:170vmax;height:170vmax;margin:-85vmax 0 0 -85vmax;background:repeating-conic-gradient(from 0deg,var(--c) 0 5deg,transparent 5deg 20deg);opacity:.32;-webkit-mask-image:radial-gradient(circle,#000 0%,transparent 28%);mask-image:radial-gradient(circle,#000 0%,transparent 28%);animation:rvs 28s linear infinite}
+@keyframes rvs{to{transform:rotate(360deg)}}
+.rv-top{position:absolute;top:calc(env(safe-area-inset-top,0px) + 7vh);left:0;right:0;text-align:center;padding:0 70px;z-index:2}
+.rv-top small{display:block;color:var(--c);font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-shadow:0 0 14px var(--c)}
+.rv-top h2{margin:2px 0 0;font-size:clamp(2.4rem,10vw,4.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:#fff;text-shadow:0 0 30px var(--c),0 0 60px var(--c)}
+.rv-f{position:relative;z-index:2;animation:rvf .8s cubic-bezier(.2,.9,.3,1.4) backwards,flt 3.2s ease-in-out .8s infinite}
+@keyframes rvf{from{opacity:0;transform:scale(.2) rotate(-25deg)}}
+@keyframes flt{50%{transform:translateY(-14px)}}
+.rv-f .orb{width:min(46vmin,260px);height:min(46vmin,260px);box-shadow:0 0 70px var(--c),0 0 140px var(--c)}
+.rv-f .orb b{font-size:min(20vmin,110px)}
+.rv-f .orb:before{width:min(9vmin,50px);height:min(6vmin,32px);top:-4%}
+.rv-f img{width:min(52vmin,320px);height:min(52vmin,320px);object-fit:contain;filter:drop-shadow(0 0 40px var(--c))}
+.rv-x{position:absolute;z-index:3;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;font-size:2rem;line-height:1;cursor:pointer;transition:.2s}
+.rv-x:hover{background:rgba(255,255,255,.28);transform:rotate(90deg) scale(1.08)}
+.inf{display:block;color:var(--mute);font-style:normal;font-size:.9rem;margin-top:4px}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.rv.meme .rv-glow{animation:rvp 2.6s ease-in-out infinite,hue 3s linear infinite}
+.rv.meme .rv-rays{animation:rvs 28s linear infinite,hue 3s linear infinite}
+.rv.meme .rv-top h2{animation:hue 3s linear infinite}
+@media (pointer:fine){html.cc,html.cc *{cursor:none!important}html.cc input,html.cc textarea{cursor:text!important}html.cc select,html.cc input[type=checkbox]{cursor:pointer!important}}
+.cd,.cr{position:fixed;left:0;top:0;pointer-events:none;z-index:1000;border-radius:50%;transform:translate(-100px,-100px)}
+.cd{width:8px;height:8px;margin:-4px 0 0 -4px;background:#fff;box-shadow:0 0 12px var(--cy),0 0 22px var(--cy)}
+.cr{width:36px;height:36px;margin:-18px 0 0 -18px;border:2px solid var(--cy);box-shadow:0 0 14px rgba(34,228,255,.5);transition:width .2s,height .2s,margin .2s,border-color .2s,background .2s,opacity .2s}
+.cr.hot{width:54px;height:54px;margin:-27px 0 0 -27px;border-color:var(--mg);background:rgba(255,61,154,.12)}
+.cr.dn{width:22px;height:22px;margin:-11px 0 0 -11px}
+.nat .cd,.nat .cr{opacity:0}
 @media (prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -83,6 +130,7 @@ textarea{width:100%;min-height:130px;resize:vertical}
 <button role="tab" id="t-dice" aria-selected="true">🎲 Dice</button>
 <button role="tab" id="t-coin" aria-selected="false">🪙 Coin</button>
 <button role="tab" id="t-pick" aria-selected="false">🎯 Chooser</button>
+<button role="tab" id="t-fruit" aria-selected="false">🍎 Fruits</button>
 </div>
 
 <section class="panel" id="p-dice" role="tabpanel">
@@ -111,9 +159,27 @@ textarea{width:100%;min-height:130px;resize:vertical}
 <label style="flex-direction:row;align-items:center;gap:8px;padding-bottom:10px"><input id="r-rep" type="checkbox" style="width:auto"> Allow repeats</label>
 <button class="go" id="r-go">Choose</button>
 </div>
+<div class="wheelwrap"><div class="ptr"></div><canvas id="wheel" width="340" height="340"></canvas></div>
 <div class="out" id="r-out" aria-live="polite"></div>
 </section>
+<section class="panel" id="p-fruit" role="tabpanel" hidden>
+<div class="row">
+<label>Number of rolls<input id="f-n" type="number" min="1" max="1000" value="1"></label>
+<label style="flex-direction:row;align-items:center;gap:8px;padding-bottom:10px"><input id="f-snd" type="checkbox" style="width:auto" checked> Sound</label>
+<label style="flex-direction:row;align-items:center;gap:8px;padding-bottom:10px"><input id="f-fast" type="checkbox" style="width:auto"> Skip animation</label>
+<button class="go" id="f-go">Open case</button>
+</div>
+<div class="case"><div class="mk"></div><div class="strip" id="f-strip"></div></div>
+<div class="out" id="f-out" aria-live="polite"></div>
+<p class="note">Fan-made fruit roller. Not affiliated with Blox Fruits or Roblox. Drop rates are approximate, not the game's real odds.</p>
+</section>
 </main>
+<div class="rv" id="rv" hidden role="dialog" aria-modal="true" aria-labelledby="rv-n">
+<div class="rv-glow"></div><div class="rv-rays"></div>
+<button class="rv-x" id="rv-x" aria-label="Close">&times;</button>
+<div class="rv-top"><small id="rv-r"></small><h2 id="rv-n"></h2></div>
+<div class="rv-f" id="rv-f"></div>
+</div>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -130,9 +196,9 @@ function size(){const d=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=
   const n=Math.min(90,Math.floor(W*H/14000));ps=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.8+.6,c:COL[Math.random()*4|0]}))}
 addEventListener('resize',size);size();
 addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
-function burst(x,y,n=60){if(RM)return;for(let i=0;i<n;i++){const a=Math.random()*6.283,s=Math.random()*9+2;
-  bs.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,r:Math.random()*3.5+1.5,c:COL[Math.random()*5|0],l:1,sq:Math.random()<.4})}}
-function burstAt(el,n){const b=el.getBoundingClientRect();burst(b.left+b.width/2,b.top+Math.min(b.height/2,120),n)}
+function burst(x,y,n=60,cols=COL){if(RM)return;for(let i=0;i<n;i++){const a=Math.random()*6.283,s=Math.random()*9+2;
+  bs.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,r:Math.random()*3.5+1.5,c:cols[Math.random()*cols.length|0],l:1,sq:Math.random()<.4})}}
+function burstAt(el,n,cols){const b=el.getBoundingClientRect();burst(b.left+b.width/2,b.top+Math.min(b.height/2,120),n,cols)}
 (function loop(){
   cx.clearRect(0,0,W,H);
   for(const p of ps){
@@ -162,7 +228,7 @@ function bars(map,keys,total){const top=Math.max(...keys.map(k=>map[k]||0),1);
 const stagger=i=>Math.min(i*14,1100)/1000;
 
 /* ---------- tabs ---------- */
-const names=['dice','coin','pick'];
+const names=['dice','coin','pick','fruit'];
 names.forEach(n=>$('t-'+n).onclick=()=>{names.forEach(m=>{$('t-'+m).setAttribute('aria-selected',m===n);$('p-'+m).hidden=m!==n});burstAt($('t-'+n),14)});
 
 /* ---------- dice ---------- */
@@ -204,22 +270,116 @@ $('c-go').onclick=async e=>{
   }else out.innerHTML=`<div class="stats"><div><b>${last?'Heads':'Tails'}</b>result</div></div>`;
 };
 
-/* ---------- chooser ---------- */
+/* ---------- chooser + spinner wheel ---------- */
+const wc=$('wheel'),wx=wc.getContext('2d'),WC=['#22e4ff','#8b5cff','#ff3d9a','#ffc83d'];let rot=0;
+const getList=()=>$('r-list').value.split('\n').map(x=>x.trim()).filter(Boolean);
+function drawWheel(){
+  const d=devicePixelRatio||1,S=340,c=S/2,R=c-4,L=getList(),n=L.length;
+  wc.width=S*d;wc.height=S*d;wx.setTransform(d,0,0,d,0,0);wx.clearRect(0,0,S,S);
+  if(!n||n>200){wx.fillStyle='#1b2350';wx.beginPath();wx.arc(c,c,R,0,6.283);wx.fill();wx.fillStyle='#8d99c2';wx.font='700 17px sans-serif';wx.textAlign='center';
+    wx.fillText(n?'Too many options for the wheel':'Add options to fill the wheel',c,c+6);return}
+  const seg=6.283185/n;
+  for(let i=0;i<n;i++){
+    const a0=-Math.PI/2+i*seg;
+    wx.beginPath();wx.moveTo(c,c);wx.arc(c,c,R,a0,a0+seg);wx.closePath();
+    wx.fillStyle=(i===n-1&&n>1&&i%4===0)?WC[2]:WC[i%4];wx.fill();
+    if(n<=100){wx.strokeStyle='rgba(7,11,26,.55)';wx.lineWidth=1.5;wx.stroke()}
+    if(n<=40){wx.save();wx.translate(c,c);wx.rotate(a0+seg/2);wx.textAlign='right';wx.textBaseline='middle';wx.fillStyle='#0a0f24';
+      wx.font='800 '+Math.max(9,Math.min(18,R*seg*.45))+'px sans-serif';
+      wx.fillText(L[i].length>16?L[i].slice(0,15)+'…':L[i],R-16,0);wx.restore()}
+  }
+  wx.beginPath();wx.arc(c,c,26,0,6.283);wx.fillStyle='#070b1a';wx.fill();wx.lineWidth=4;wx.strokeStyle='#ffc83d';wx.stroke();
+}
+$('r-list').addEventListener('input',drawWheel);drawWheel();
 $('r-go').onclick=async e=>{
-  const out=$('r-out'),btn=e.currentTarget,list=$('r-list').value.split('\n').map(x=>x.trim()).filter(Boolean),n=count($('r-n'),1000),rep=$('r-rep').checked;
+  const out=$('r-out'),btn=e.currentTarget,list=getList(),n=count($('r-n'),1000),rep=$('r-rep').checked;
   if(!list.length){out.innerHTML='<p class="err">Add at least one option, one per line.</p>';return}
   if(!n){out.innerHTML='<p class="err">Enter how many to pick, from 1 to 1,000.</p>';return}
   if(!rep&&n>list.length){out.innerHTML=`<p class="err">You have ${list.length} option${list.length>1?'s':''}. Pick fewer, or turn on Allow repeats.</p>`;return}
-  const picks=[];
-  if(rep){for(let i=0;i<n;i++)picks.push(list[rnd(list.length)])}
-  else{const pool=list.slice();for(let i=0;i<n;i++)picks.push(pool.splice(rnd(pool.length),1)[0])}
-  btn.disabled=true;out.innerHTML='<div class="reel spin" id="reel">…</div>';const reel=$('reel');
-  if(!RM){for(let i=0,d=40;d<260;i++,d*=1.13){reel.textContent=list[rnd(list.length)];await sleep(d)}}
-  reel.className='reel done';reel.textContent=picks[0];
-  burstAt(reel,80);btn.disabled=false;
-  if(n>1)out.insertAdjacentHTML('beforeend','<div class="picks">'+picks.slice(1,LIMIT).map((p,i)=>`<div class="pick" style="--d:${stagger(i)}s">${esc(p)}</div>`).join('')+'</div>'+(n>LIMIT?`<p class="note">Showing the first ${LIMIT} of ${n} picks.</p>`:''));
-  reel.textContent=picks[0];
+  const idx=[];
+  if(rep){for(let i=0;i<n;i++)idx.push(rnd(list.length))}
+  else{const pool=list.map((_,i)=>i);for(let i=0;i<n;i++)idx.push(pool.splice(rnd(pool.length),1)[0])}
+  btn.disabled=true;out.innerHTML='';
+  if(list.length<=200){
+    const seg=360/list.length,target=-(idx[0]+.5+(Math.random()-.5)*.7)*seg,from=rot;
+    rot+=((target-rot)%360+360)%360+360*6;
+    if(!RM){wc.animate([{transform:`rotate(${from}deg)`},{transform:`rotate(${rot}deg)`}],{duration:4500,easing:'cubic-bezier(.12,.6,.1,1)',fill:'forwards'});await sleep(4500)}
+    wc.style.transform=`rotate(${rot}deg)`;
+  }
+  btn.disabled=false;
+  out.innerHTML=`<div class="reel done">${esc(list[idx[0]])}</div>`+(n>1?'<div class="picks">'+idx.slice(1,LIMIT).map((k,i)=>`<div class="pick" style="--d:${stagger(i)}s">${esc(list[k])}</div>`).join('')+'</div>'+(n>LIMIT?`<p class="note">Showing the first ${LIMIT} of ${n} picks.</p>`:''):'');
+  burstAt(wc,90);
 };
+
+/* ---------- fruit case opening ---------- */
+const USE_IMAGES=false; // set to true after adding images as fruits/<name>.png (lowercase, e.g. fruits/dragon.png, fruits/t-rex.png)
+const TIERS=[{n:'Common',c:'#aab4c8',w:450},{n:'Uncommon',c:'#3fa0ff',w:280},{n:'Rare',c:'#a064ff',w:150},{n:'Legendary',c:'#ff3d9a',w:90},{n:'Mythical',c:'#ff4343',w:30},{n:'Meme',c:'#ffd400',w:0}];
+const TY={N:'Natural',E:'Elemental',B:'Beast'};
+const POOL=[
+['Rocket|N|5000|50','Spin|N|7500|75','Blade|N|30000|100','Spring|N|60000|180','Bomb|N|80000|220','Smoke|E|100000|250','Spike|N|180000|380'],
+['Flame|E|250000|550','Ice|E|350000|750','Sand|E|420000|850','Dark|E|500000|950','Eagle|B|550000|975','Diamond|N|600000|1000'],
+['Light|E|650000|1100','Rubber|N|750000|1200','Ghost|N|940000|1275','Magma|E|960000|1300'],
+['Quake|N|1000000|1500','Buddha|B|1200000|1650','Love|N|1300000|1700','Creation|N|1400000|1750','Spider|N|1500000|1800','Sound|N|1700000|1900','Phoenix|B|1800000|2000','Portal|N|1900000|2000','Lightning|E|2100000|2100','Pain|N|2300000|2200','Blizzard|E|2400000|2250'],
+['Gravity|N|2500000|2300','Mammoth|B|2700000|2350','T-Rex|B|2700000|2350','Dough|E|2800000|2400','Shadow|N|2900000|2425','Venom|N|3000000|2450','Gas|E|3200000|2500','Spirit|N|3400000|2550','Tiger|B|5000000|3000','Yeti|B|5000000|3000','Kitsune|B|8000000|4000','Control|N|9000000|4000','Dragon|B|15000000|5000']
+].map(t=>t.map(x=>{const[a,b,c,d]=x.split('|');return{name:a,ty:TY[b],beli:+c,robux:+d}}));
+const MEME={name:'Doge Fruit',t:5,em:'🐕',img:'doge',ty:'Meme',beli:0,robux:0}; // 0.00001% = 1 in 10,000,000
+function pickFruit(){if(rnd(10000000)===0)return MEME;let r=rnd(1000),t=0;while(r>=TIERS[t].w){r-=TIERS[t].w;t++}return{...POOL[t][rnd(POOL[t].length)],t}}
+// cosmetic only: the scrolling strip shows extra Mythicals, but the winning card always comes from pickFruit()
+function filler(){return rnd(100)<30?{...POOL[4][rnd(POOL[4].length)],t:4}:pickFruit()}
+const orb=f=>`<div class="orb"><b>${f.em||f.name[0]}</b></div>`;
+const ic=f=>USE_IMAGES?`<img src="fruits/${f.img||f.name.toLowerCase()}.png" alt="" data-n="${f.name}" data-e="${f.em||''}" onerror="fb(this)">`:orb(f);
+window.fb=img=>{img.outerHTML=orb({name:img.dataset.n,em:img.dataset.e})};
+const card=(f,cls='')=>`<div class="fc ${cls}" style="--c:${TIERS[f.t].c}">${ic(f)}<span>${f.name}</span></div>`;
+let AC;function tick(){try{AC=AC||new AudioContext();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime;o.frequency.value=950;g.gain.setValueAtTime(.06,t);g.gain.exponentialRampToValueAtTime(.001,t+.05);o.connect(g);g.connect(AC.destination);o.start();o.stop(t+.05)}catch(e){}}
+const strip=$('f-strip'),CW=128;
+strip.innerHTML=Array.from({length:14},filler).map(f=>card(f)).join('');
+
+const rv=$('rv');
+function showReveal(w){const T=TIERS[w.t];rv.style.setProperty('--c',T.c);rv.classList.toggle('meme',w.t===5);$('rv-r').textContent=T.n;$('rv-n').textContent=w.name;$('rv-f').innerHTML=ic(w);rv.hidden=false;$('rv-x').focus()}
+function closeReveal(){rv.hidden=true;$('f-go').focus()}
+$('rv-x').onclick=closeReveal;
+rv.addEventListener('click',e=>{if(e.target===rv)closeReveal()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!rv.hidden)closeReveal()});
+$('f-go').onclick=async e=>{
+  const out=$('f-out'),btn=e.currentTarget,n=count($('f-n'),1000);
+  if(!n){out.innerHTML='<p class="err">Enter a whole number from 1 to 1,000.</p>';return}
+  const rolls=Array.from({length:n},pickFruit),w=rolls[0];btn.disabled=true;out.innerHTML='';
+  if(!RM&&!$('f-fast').checked){
+    strip.getAnimations().forEach(a=>a.cancel());
+    const items=Array.from({length:60},filler);items[52]=w;
+    strip.innerHTML=items.map((f,i)=>card(f)).join('');
+    const cw=strip.parentNode.clientWidth,x=52*CW+60-cw/2+(Math.random()-.5)*80;
+    const anim=strip.animate([{transform:'translateX(0)'},{transform:`translateX(${-x}px)`}],{duration:6000,easing:'cubic-bezier(.08,.55,.12,1)',fill:'forwards'});
+    let done=false,last=-1;anim.finished.then(()=>done=true).catch(()=>done=true);
+    await new Promise(res=>{(function f(){const m=new DOMMatrix(getComputedStyle(strip).transform).m41,i=Math.floor((-m+cw/2)/CW);
+      if(i!==last){last=i;if($('f-snd').checked)tick()}done?res():requestAnimationFrame(f)})()});
+    strip.style.transform=`translateX(${-x}px)`;strip.children[52].classList.add('win');
+  }
+  const T=TIERS[w.t];
+  let h=`<div class="res" style="--c:${T.c}">${ic(w)}<div><small>${T.n}</small><h3>${w.name}</h3><em class="inf">${w.t===5?'Absurdly rare: 1 in 10,000,000.':`${w.ty} · ${w.beli.toLocaleString('en-US')} Beli · ${w.robux.toLocaleString('en-US')} Robux`}</em></div></div>`;
+  if(n>1){
+    h+='<div class="stats" style="margin-top:18px">'+TIERS.map((t,i)=>`<div><b style="color:${t.c}">${rolls.filter(r=>r.t===i).length}</b>${t.n}</div>`).join('')+'</div>';
+    h+='<div class="tiles">'+rolls.slice(1,LIMIT).map((f,i)=>`<div class="tile" style="--d:${stagger(i)}s;border-color:${TIERS[f.t].c};box-shadow:0 0 8px ${TIERS[f.t].c}66">${f.name}</div>`).join('')+'</div>';
+    if(n>LIMIT)h+=`<p class="note">Showing the first ${LIMIT} of ${n.toLocaleString()} rolls. Counts include all of them.</p>`;
+  }
+  out.innerHTML=h;btn.disabled=false;
+  burstAt(out.firstChild,w.t>=3?160:w.t*25+30,[T.c,'#ffffff','#ffc83d']);
+  showReveal(w);
+};
+
+/* ---------- custom cursor ---------- */
+if(matchMedia('(pointer:fine)').matches){
+  const dot=document.createElement('div'),ring=document.createElement('div');dot.className='cd';ring.className='cr';
+  document.body.append(dot,ring);document.documentElement.classList.add('cc');
+  let mx=-100,my=-100,rx=-100,ry=-100;
+  addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px)`});
+  document.addEventListener('pointerover',e=>{const t=e.target;if(!t.closest)return;
+    document.body.classList.toggle('nat',!!t.closest('input,textarea,select'));
+    ring.classList.toggle('hot',!!t.closest('button,label,.tile,.fc,[role=tab]'))});
+  addEventListener('pointerdown',e=>{ring.classList.add('dn');burst(e.clientX,e.clientY,10,['#22e4ff','#ff3d9a','#ffffff'])});
+  addEventListener('pointerup',()=>ring.classList.remove('dn'));
+  (function l(){const k=RM?1:.18;rx+=(mx-rx)*k;ry+=(my-ry)*k;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(l)})();
+}
 </script>
 </body>
 </html>
