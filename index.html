@@ -13,16 +13,16 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:radial-gradient(1200px 700px at 15% -10%,#1a1f5a 0%,transparent 60%),radial-gradient(900px 600px at 100% 10%,#3a0f4d 0%,transparent 55%),var(--bg);background-attachment:fixed;color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;min-height:100vh;overflow-x:hidden}
 #fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 main{position:relative;z-index:1;max-width:740px;margin:0 auto;padding:34px 18px 60px}
-h1{font-size:clamp(2.3rem,8vw,3.8rem);font-weight:800;letter-spacing:-.04em;margin:0 0 6px;line-height:1;background:linear-gradient(90deg,var(--cy),var(--vi),var(--mg),var(--cy));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+h1{font-size:clamp(2.3rem,8vw,3.8rem);font-weight:800;letter-spacing:-.04em;margin:0 0 6px;line-height:1;background:linear-gradient(90deg,var(--cy),var(--vi),var(--mg),var(--cy));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 14s linear infinite}
 @keyframes shine{to{background-position:250% 0}}
 .sub{color:var(--mute);margin:0 0 26px}
-.tabs{display:flex;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:16px;padding:5px;margin-bottom:16px}
+.tabs{display:flex;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(5px);border-radius:16px;padding:5px;margin-bottom:16px}
 .tabs button{flex:1;border:0;background:none;color:var(--mute);font:600 1rem inherit;font-family:inherit;padding:11px;border-radius:12px;cursor:pointer;transition:.25s}
 .tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{color:#06101f;background:linear-gradient(135deg,var(--cy),var(--vi));box-shadow:0 0 22px rgba(34,228,255,.45)}
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--go);outline-offset:2px}
-.panel{position:relative;background:rgba(14,20,48,.62);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.panel:before{content:"";position:absolute;inset:-1px;border-radius:23px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 70%,var(--cy),var(--mg),transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 5s linear infinite;pointer-events:none}
+.panel{position:relative;background:rgba(14,20,48,.62);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.panel:before{content:"";position:absolute;inset:-1px;border-radius:23px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 70%,var(--cy),var(--mg),transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 12s linear infinite;pointer-events:none}
 @property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
 @keyframes spin{to{--a:360deg}}
 .panel[hidden]{display:none}
@@ -62,7 +62,7 @@ textarea{width:100%;min-height:130px;resize:vertical}
 .shadow{width:90px;height:14px;border-radius:50%;background:rgba(0,0,0,.5);filter:blur(6px);margin-top:-6px}
 .reel{height:84px;border-radius:16px;display:grid;place-items:center;font-size:clamp(1.6rem,6vw,2.4rem);font-weight:800;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);overflow:hidden;padding:0 14px;text-align:center;word-break:break-word}
 .reel.spin{color:var(--mute);filter:blur(1px)}
-.reel.done{color:#06101f;background:linear-gradient(135deg,var(--cy),var(--go));box-shadow:0 0 40px rgba(34,228,255,.7);animation:pop .5s cubic-bezier(.2,.9,.3,1.6)}
+.reel.done{color:#06101f;background:linear-gradient(135deg,var(--cy),var(--go));box-shadow:0 0 18px rgba(34,228,255,.45);animation:pop .5s cubic-bezier(.2,.9,.3,1.6)}
 @keyframes pop{from{transform:scale(.7)}}
 .picks{display:flex;flex-direction:column;gap:8px;margin-top:12px}
 .pick{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:11px 16px;font-weight:700;font-size:1.1rem;animation:slide .5s cubic-bezier(.2,.9,.3,1.2) backwards;animation-delay:var(--d,0s)}
@@ -91,7 +91,7 @@ textarea{width:100%;min-height:130px;resize:vertical}
 @keyframes rvin{from{opacity:0}}
 .rv-glow{position:absolute;left:50%;top:50%;width:120vmin;height:120vmin;margin:-60vmin 0 0 -60vmin;background:radial-gradient(circle,var(--c) 0%,transparent 62%);opacity:.6;animation:rvp 2.6s ease-in-out infinite}
 @keyframes rvp{50%{opacity:.9;transform:scale(1.08)}}
-.rv-rays{position:absolute;left:50%;top:50%;width:170vmax;height:170vmax;margin:-85vmax 0 0 -85vmax;background:repeating-conic-gradient(from 0deg,var(--c) 0 5deg,transparent 5deg 20deg);opacity:.32;-webkit-mask-image:radial-gradient(circle,#000 0%,transparent 28%);mask-image:radial-gradient(circle,#000 0%,transparent 28%);animation:rvs 28s linear infinite}
+.rv-rays{position:absolute;left:50%;top:50%;width:170vmax;height:170vmax;margin:-85vmax 0 0 -85vmax;background:repeating-conic-gradient(from 0deg,var(--c) 0 5deg,transparent 5deg 20deg);opacity:.32;-webkit-mask-image:radial-gradient(circle,#000 0%,transparent 28%);mask-image:radial-gradient(circle,#000 0%,transparent 28%);animation:rvs 45s linear infinite}
 @keyframes rvs{to{transform:rotate(360deg)}}
 .rv-top{position:absolute;top:calc(env(safe-area-inset-top,0px) + 7vh);left:0;right:0;text-align:center;padding:0 70px;z-index:2}
 .rv-top small{display:block;color:var(--c);font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-shadow:0 0 14px var(--c)}
@@ -108,7 +108,7 @@ textarea{width:100%;min-height:130px;resize:vertical}
 .inf{display:block;color:var(--mute);font-style:normal;font-size:.9rem;margin-top:4px}
 @keyframes hue{to{filter:hue-rotate(360deg)}}
 .rv.meme .rv-glow{animation:rvp 2.6s ease-in-out infinite,hue 3s linear infinite}
-.rv.meme .rv-rays{animation:rvs 28s linear infinite,hue 3s linear infinite}
+.rv.meme .rv-rays{animation:rvs 45s linear infinite,hue 3s linear infinite}
 .rv.meme .rv-top h2{animation:hue 3s linear infinite}
 @media (pointer:fine){html.cc,html.cc *{cursor:none!important}html.cc input,html.cc textarea{cursor:text!important}html.cc select,html.cc input[type=checkbox]{cursor:pointer!important}}
 .cd,.cr{position:fixed;left:0;top:0;pointer-events:none;z-index:1000;border-radius:50%;transform:translate(-100px,-100px)}
@@ -118,6 +118,37 @@ textarea{width:100%;min-height:130px;resize:vertical}
 .cr.dn{width:22px;height:22px;margin:-11px 0 0 -11px}
 .nat .cd,.nat .cr{opacity:0}
 @media (prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important}}
+
+/* ---------- low-power rendering ---------- */
+@media (max-width:700px){
+  #fx{display:none}
+  .panel:before{animation:none}
+  .rv-rays{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  #fx{display:none}
+}
+
+/* Static custom cursor */
+html, body, button, input, textarea, select, a {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' fill='%2306101f' fill-opacity='.9' stroke='%2322e4ff' stroke-width='2'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%23ffffff'/%3E%3C/svg%3E") 12 12, auto !important;
+}
+
+/* ---------- 8-ball ---------- */
+.ball-stage{height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;perspective:700px}
+.eightball{width:180px;height:180px;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 32% 25%,#4b5369 0,#151a29 38%,#03050a 78%);box-shadow:inset -18px -20px 35px rgba(0,0,0,.75),inset 10px 8px 18px rgba(255,255,255,.12),0 18px 45px rgba(0,0,0,.5),0 0 28px rgba(139,92,255,.3);transform:translateZ(0)}
+.eightball-window{width:82px;height:82px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 20px rgba(255,255,255,.18)}
+.eightball-window span{font:800 3.1rem/1 Georgia,serif;color:#05070d}
+.eightball-label{padding:6px 14px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.08);box-shadow:0 6px 20px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.08);font-size:.78rem;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.78);backdrop-filter:blur(5px)}
+.eightball.asking{animation:ballshake .55s cubic-bezier(.36,.07,.19,.97)}
+@keyframes ballshake{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-12px) rotate(-5deg)}40%{transform:translateX(12px) rotate(5deg)}60%{transform:translateX(-8px) rotate(-3deg)}80%{transform:translateX(7px) rotate(3deg)}}
+#b-answer{transition:opacity .15s;display:block;max-width:72px;text-align:center;overflow-wrap:anywhere}
+#b-answer.long{font-size:1.15rem;line-height:1.05}
+#b-answer.medium{font-size:1.55rem;line-height:1.05}
+#b-answer.reveal{animation:answerpop .35s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes answerpop{from{opacity:0;transform:scale(.45)}to{opacity:1;transform:scale(1)}}
+@media(max-width:700px){.ball-stage{height:255px}.eightball{width:155px;height:155px}.eightball-window{width:72px;height:72px}.eightball-window span{font-size:2.6rem}}
+
 </style>
 </head>
 <body>
@@ -131,6 +162,7 @@ textarea{width:100%;min-height:130px;resize:vertical}
 <button role="tab" id="t-coin" aria-selected="false">🪙 Coin</button>
 <button role="tab" id="t-pick" aria-selected="false">🎯 Chooser</button>
 <button role="tab" id="t-fruit" aria-selected="false">🍎 Fruits</button>
+<button role="tab" id="t-8ball" aria-selected="false">🎱 8-Ball</button>
 </div>
 
 <section class="panel" id="p-dice" role="tabpanel">
@@ -162,6 +194,18 @@ textarea{width:100%;min-height:130px;resize:vertical}
 <div class="wheelwrap"><div class="ptr"></div><canvas id="wheel" width="340" height="340"></canvas></div>
 <div class="out" id="r-out" aria-live="polite"></div>
 </section>
+<section class="panel" id="p-8ball" role="tabpanel" hidden>
+<div class="row">
+<label style="flex:1;min-width:220px">Ask your question<input id="b-q" type="text" maxlength="120" placeholder="Will I get lucky today?"></label>
+<button class="go" id="b-go">Ask</button>
+</div>
+<div class="ball-stage">
+  <div class="eightball" id="eightball"><div class="eightball-window"><span>8</span></div></div>
+  <div class="eightball-label" id="b-prediction">ASK A QUESTION</div>
+</div>
+<p class="note" id="b-note">Think of a yes-or-no question.</p>
+</section>
+
 <section class="panel" id="p-fruit" role="tabpanel" hidden>
 <div class="row">
 <label>Number of rolls<input id="f-n" type="number" min="1" max="1000" value="1"></label>
@@ -190,27 +234,25 @@ function count(el,max){const v=Math.floor(Number(el.value));return(v>=1&&v<=max)
 const LIMIT=300,esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ---------- particle field + bursts ---------- */
-const cv=$('fx'),cx=cv.getContext('2d');let W,H,ps=[],bs=[],mouse={x:-999,y:-999};
+const cv=$('fx'),cx=cv.getContext('2d');let W,H,ps=[],bs=[];
 const COL=['#22e4ff','#ff3d9a','#ffc83d','#8b5cff','#ffffff'];
-function size(){const d=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);
-  const n=Math.min(90,Math.floor(W*H/14000));ps=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.8+.6,c:COL[Math.random()*4|0]}))}
+function size(){const d=Math.min(devicePixelRatio||1,1.5);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);
+  const n=Math.min(35,Math.floor(W*H/30000));ps=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.8+.6,c:COL[Math.random()*4|0]}))}
 addEventListener('resize',size);size();
-addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
 function burst(x,y,n=60,cols=COL){if(RM)return;for(let i=0;i<n;i++){const a=Math.random()*6.283,s=Math.random()*9+2;
   bs.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,r:Math.random()*3.5+1.5,c:cols[Math.random()*cols.length|0],l:1,sq:Math.random()<.4})}}
 function burstAt(el,n,cols){const b=el.getBoundingClientRect();burst(b.left+b.width/2,b.top+Math.min(b.height/2,120),n,cols)}
+let fxRunning=true;
+document.addEventListener('visibilitychange',()=>{fxRunning=!document.hidden});
 (function loop(){
+  if(!fxRunning){requestAnimationFrame(loop);return}
   cx.clearRect(0,0,W,H);
   for(const p of ps){
-    const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.hypot(dx,dy);
-    if(d<130){p.vx+=dx/d*.05;p.vy+=dy/d*.05}
     p.vx*=.995;p.vy*=.995;p.x+=p.vx;p.y+=p.vy;
     if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
     cx.globalAlpha=.8;cx.fillStyle=p.c;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill();
   }
-  if(!RM){cx.lineWidth=.6;
-    for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const a=ps[i],b=ps[j],d=Math.hypot(a.x-b.x,a.y-b.y);
-      if(d<110){cx.globalAlpha=(1-d/110)*.28;cx.strokeStyle='#8b9cff';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}}
+  /* Connection lines removed: they are O(n²) every animation frame. */
   for(let i=bs.length-1;i>=0;i--){const p=bs[i];p.vy+=.28;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.l-=.014;
     if(p.l<=0){bs.splice(i,1);continue}
     cx.globalAlpha=p.l;cx.fillStyle=p.c;cx.shadowColor=p.c;cx.shadowBlur=10;
@@ -228,7 +270,7 @@ function bars(map,keys,total){const top=Math.max(...keys.map(k=>map[k]||0),1);
 const stagger=i=>Math.min(i*14,1100)/1000;
 
 /* ---------- tabs ---------- */
-const names=['dice','coin','pick','fruit'];
+const names=['dice','coin','pick','fruit','8ball'];
 names.forEach(n=>$('t-'+n).onclick=()=>{names.forEach(m=>{$('t-'+m).setAttribute('aria-selected',m===n);$('p-'+m).hidden=m!==n});burstAt($('t-'+n),14)});
 
 /* ---------- dice ---------- */
@@ -311,6 +353,24 @@ $('r-go').onclick=async e=>{
   burstAt(wc,90);
 };
 
+
+/* ---------- magic 8-ball ---------- */
+const ballAnswers=[
+'Absolutely!','Yes — definitely.','Without a doubt!','It is certain.','It is decidedly so.','You may rely on it.','As I see it, yes.','Most likely!','Outlook good.','Yes!','Signs point to yes.','Definitely yes.','The answer is yes.','You can count on it.','Very likely.','All signs say yes.','The future looks bright.','Things are looking up.','You are on the right track.','Go for it!','It is looking very promising.','Good things are coming.','The odds are in your favor.','Yes — trust your instincts.','A positive outcome is likely.','The signs are encouraging.','You have a good chance.','Looks like a yes!','The universe says yes.','Your prediction is looking good.','Ask again later.','Reply hazy — try again.','Cannot predict now.','Don\'t count on it.','Very doubtful.'
+];
+$('b-go').onclick=async e=>{
+  const q=$('b-q').value.trim(),ball=$('eightball'),predictionEl=$('b-prediction'),note=$('b-note'),btn=e.currentTarget;
+  if(!q){note.textContent='Ask a yes-or-no question first.';return}
+  btn.disabled=true;ball.classList.remove('asking');void ball.offsetWidth;ball.classList.add('asking');
+  predictionEl.textContent='…';
+  await sleep(550);
+  const prediction=ballAnswers[rnd(ballAnswers.length)];
+  predictionEl.textContent=prediction;
+  note.textContent='The 8-Ball has spoken.';btn.disabled=false;
+  burstAt(ball,35);
+};
+$('b-q').addEventListener('keydown',e=>{if(e.key==='Enter')$('b-go').click()});
+
 /* ---------- fruit case opening ---------- */
 const USE_IMAGES=false; // set to true after adding images as fruits/<name>.png (lowercase, e.g. fruits/dragon.png, fruits/t-rex.png)
 const TIERS=[{n:'Common',c:'#aab4c8',w:450},{n:'Uncommon',c:'#3fa0ff',w:280},{n:'Rare',c:'#a064ff',w:150},{n:'Legendary',c:'#ff3d9a',w:90},{n:'Mythical',c:'#ff4343',w:30},{n:'Meme',c:'#ffd400',w:0}];
@@ -367,19 +427,6 @@ $('f-go').onclick=async e=>{
   showReveal(w);
 };
 
-/* ---------- custom cursor ---------- */
-if(matchMedia('(pointer:fine)').matches){
-  const dot=document.createElement('div'),ring=document.createElement('div');dot.className='cd';ring.className='cr';
-  document.body.append(dot,ring);document.documentElement.classList.add('cc');
-  let mx=-100,my=-100,rx=-100,ry=-100;
-  addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px)`});
-  document.addEventListener('pointerover',e=>{const t=e.target;if(!t.closest)return;
-    document.body.classList.toggle('nat',!!t.closest('input,textarea,select'));
-    ring.classList.toggle('hot',!!t.closest('button,label,.tile,.fc,[role=tab]'))});
-  addEventListener('pointerdown',e=>{ring.classList.add('dn');burst(e.clientX,e.clientY,10,['#22e4ff','#ff3d9a','#ffffff'])});
-  addEventListener('pointerup',()=>ring.classList.remove('dn'));
-  (function l(){const k=RM?1:.18;rx+=(mx-rx)*k;ry+=(my-ry)*k;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(l)})();
-}
 </script>
 </body>
 </html>
